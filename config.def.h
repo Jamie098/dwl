@@ -25,7 +25,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-    "dunst", NULL, "waybar", NULL, NULL /* terminate */
+    NULL /* terminate */
 };
 
 static const Rule rules[] = {
@@ -174,7 +174,8 @@ static const Key keys[] = {
      tagmon,
      {.i = WLR_DIRECTION_RIGHT}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_m, spawn,
-     SHCMD("/home/jamie/.local/bin/dmenu-maintenance")},
+     SHCMD("/home/jamie/.local/bin/wmenu-maintenance")},
+    {MODKEY, XKB_KEY_q, spawn, SHCMD("/home/jamie/.local/bin/wmenu-kill")},
 
     TAGKEYS(XKB_KEY_1, XKB_KEY_exclam, 0),
     TAGKEYS(XKB_KEY_2, XKB_KEY_at, 1),
