@@ -25,7 +25,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-    NULL /* terminate */
+    "/home/jamie/.local/bin/autostart", NULL, NULL /* terminate */
 };
 
 static const Rule rules[] = {
