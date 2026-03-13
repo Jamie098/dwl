@@ -16,6 +16,10 @@ static const float urgentcolor[] = COLOR(0xff0000ff);
  * behavior */
 static const float fullscreen_bg[] = {0.0f, 0.0f, 0.0f,
                                       1.0f}; /* You can also use glsl colors */
+static const int smartgaps =
+    0;               /* 1 means no outer gap when there is only one window */
+static int gaps = 1; /* 1 means gaps between windows are added */
+static const unsigned int gappx = 20; /* gap pixel between windows */
 
 /* tagging - TAGCOUNT must be no greater than 31 */
 #define TAGCOUNT (9)
@@ -176,6 +180,8 @@ static const Key keys[] = {
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_m, spawn,
      SHCMD("/home/jamie/.local/bin/wmenu-maintenance")},
     {MODKEY, XKB_KEY_q, spawn, SHCMD("/home/jamie/.local/bin/wmenu-kill")},
+
+    {MODKEY, XKB_KEY_g, togglegaps, {0}},
 
     TAGKEYS(XKB_KEY_1, XKB_KEY_exclam, 0),
     TAGKEYS(XKB_KEY_2, XKB_KEY_at, 1),
