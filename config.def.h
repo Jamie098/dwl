@@ -12,17 +12,18 @@ static const float rootcolor[] = COLOR(0x222222ff);
 static const float bordercolor[] = COLOR(0x444444ff);
 static const float focuscolor[] = COLOR(0x005577ff);
 static const float urgentcolor[] = COLOR(0xff0000ff);
+
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old
  * behavior */
 static const float fullscreen_bg[] = {0.0f, 0.0f, 0.0f,
                                       1.0f}; /* You can also use glsl colors */
-static const int smartgaps =
-    0;               /* 1 means no outer gap when there is only one window */
+static const float default_opacity = 0.85;
+
 static int gaps = 1; /* 1 means gaps between windows are added */
 static const unsigned int gappx = 20; /* gap pixel between windows */
 
 /* tagging - TAGCOUNT must be no greater than 31 */
-#define TAGCOUNT (9)
+#define TAGCOUNT (6)
 
 /* logging */
 static int log_level = WLR_ERROR;
@@ -33,12 +34,9 @@ static const char *const autostart[] = {
 };
 
 static const Rule rules[] = {
-    /* app_id             title       tags mask     isfloating   monitor */
-    {"Gimp_EXAMPLE", NULL, 0, 1,
-     -1}, /* Start on currently visible tags floating, not tiled */
-    {"firefox_EXAMPLE", NULL, 1 << 8, 0, -1}, /* Start on ONLY tag "9" */
-    /* default/example rule: can be changed but cannot be eliminated; at least
-       one rule must exist */
+    /* app_id             title       tags mask     isfloating   alpha monitor
+     */
+    {"Gimp_EXAMPLE", NULL, 0, 1, default_opacity, -1},
 };
 
 /* layout(s) */
@@ -177,6 +175,7 @@ static const Key keys[] = {
      XKB_KEY_greater,
      tagmon,
      {.i = WLR_DIRECTION_RIGHT}},
+
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_m, spawn,
      SHCMD("/home/jamie/.local/bin/wmenu-maintenance")},
     {MODKEY, XKB_KEY_q, spawn, SHCMD("/home/jamie/.local/bin/wmenu-kill")},
