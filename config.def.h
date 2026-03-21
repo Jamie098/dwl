@@ -179,9 +179,13 @@ static const Key keys[] = {
 
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_m, spawn,
      SHCMD("/home/jamie/.local/bin/wmenu-maintenance")},
+
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_u, spawn,
      SHCMD("/home/jamie/.local/bin/wmenu-utils")},
+
     {MODKEY, XKB_KEY_q, spawn, SHCMD("/home/jamie/.local/bin/wmenu-kill")},
+
+    {MODKEY, XKB_KEY_r, spawn, SHCMD("/home/jamie/.local/bin/wmenu-passwords")},
 
     {MODKEY, XKB_KEY_g, togglegaps, {0}},
 
