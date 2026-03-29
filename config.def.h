@@ -7,10 +7,10 @@ static const int sloppyfocus = 1; /* focus follows mouse */
 static const int bypass_surface_visibility =
     0; /* 1 means idle inhibitors will disable idle tracking even if it's
           surface isn't visible  */
-static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int borderpx = 2; /* border pixel of windows */
 static const float rootcolor[] = COLOR(0x222222ff);
-static const float bordercolor[] = COLOR(0x444444ff);
-static const float focuscolor[] = COLOR(0x005577ff);
+static const float bordercolor[] = COLOR(0x00d1ce);
+static const float focuscolor[] = COLOR(0x00fffc);
 static const float urgentcolor[] = COLOR(0xff0000ff);
 
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old
@@ -146,7 +146,6 @@ static const Key keys[] = {
     /* Note that Shift changes certain key codes: 2 -> at, etc. */
     /* modifier                  key                  function          argument
      */
-    {MODKEY, XKB_KEY_p, spawn, SHCMD("/home/jamie/.local/bin/programs")},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_p, spawn, {.v = menucmd}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_Return, spawn, {.v = termcmd}},
     {MODKEY, XKB_KEY_j, focusstack, {.i = +1}},
@@ -158,9 +157,9 @@ static const Key keys[] = {
     {MODKEY, XKB_KEY_Return, zoom, {0}},
     {MODKEY, XKB_KEY_Tab, view, {0}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_c, killclient, {0}},
-    {MODKEY, XKB_KEY_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY, XKB_KEY_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY, XKB_KEY_m, setlayout, {.v = &layouts[2]}},
+    // {MODKEY, XKB_KEY_t, setlayout, {.v = &layouts[0]}},
+    // {MODKEY, XKB_KEY_f, setlayout, {.v = &layouts[1]}},
+    // {MODKEY, XKB_KEY_m, setlayout, {.v = &layouts[2]}},
     {MODKEY, XKB_KEY_space, setlayout, {0}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_space, togglefloating, {0}},
     {MODKEY, XKB_KEY_e, togglefullscreen, {0}},
@@ -176,6 +175,10 @@ static const Key keys[] = {
      XKB_KEY_greater,
      tagmon,
      {.i = WLR_DIRECTION_RIGHT}},
+
+    {MODKEY, XKB_KEY_p, spawn, SHCMD("/home/jamie/.local/bin/programs")},
+
+    {MODKEY, XKB_KEY_n, spawn, SHCMD("/home/jamie/.local/bin/notes")},
 
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_m, spawn,
      SHCMD("/home/jamie/.local/bin/wmenu-maintenance")},
